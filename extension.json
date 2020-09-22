@@ -27,11 +27,14 @@
 		"OAuthRateLimiterHooks": {
 			"class": "MediaWiki\\Extension\\OAuthRateLimiter\\Hooks",
 			"services": [ "OAuthRateLimiterTierManager" ]
+		},
+		"LoadExtensionSchemaUpdatesHookHandler": {
+			"class": "MediaWiki\\Extension\\OAuthRateLimiter\\LoadExtensionSchemaUpdatesHookHandler"
 		}
 	},
 	"Hooks": {
 		"OAuthClaimStoreGetClaims": "OAuthRateLimiterHooks",
-		"LoadExtensionSchemaUpdates": "OAuthRateLimiterHooks"
+		"LoadExtensionSchemaUpdates": "LoadExtensionSchemaUpdatesHookHandler"
 	},
 	"config": {
 		"OAuthRateLimiterDefaultClientTier": {
