@@ -41,7 +41,7 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 			[
 				'tier 1' => [
 					'ratelimit' => [
-						'request_per_unit' => 10,
+						'requests_per_unit' => 10,
 						'unit'  => 'minute'
 					]
 				]
@@ -54,14 +54,14 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 			[
 				'default' => [
 					'ratelimit' => [
-						'request_per_unit' => 10,
+						'requests_per_unit' => 10,
 						'unit'  => 'minute'
 					]
 				]
 			],
 			[
 				new ClaimEntity( 'ratelimit', [
-					'request_per_unit' => 10,
+					'requests_per_unit' => 10,
 					'unit'  => 'minute'
 				] )
 			]
@@ -95,13 +95,13 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 			[
 				'tier I' => [
 					'ratelimit' => [
-						'request_per_unit' => 10,
+						'requests_per_unit' => 10,
 						'unit'  => 'minute'
 					]
 				],
 				'tier IV' => [
 					'ratelimit' => [
-						'request_per_unit' => 999,
+						'requests_per_unit' => 999,
 						'unit'  => 'minute'
 					]
 				]
@@ -109,7 +109,7 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 			[
 				new ClaimEntity( 'ratelimit',
 					[
-						'request_per_unit' => 999,
+						'requests_per_unit' => 999,
 						'unit'  => 'minute'
 					]
 				)
@@ -122,13 +122,13 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 			[
 				'tier III' => [
 					'ratelimit' => [
-						'request_per_unit' => 999,
+						'requests_per_unit' => 999,
 						'unit'  => 'minute'
 					]
 				],
 				'default' => [
 					'ratelimit' => [
-						'request_per_unit' => 10,
+						'requests_per_unit' => 10,
 						'unit'  => 'minute'
 					]
 				]
@@ -136,7 +136,7 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 			[
 				new ClaimEntity( 'ratelimit',
 					[
-						'request_per_unit' => 10,
+						'requests_per_unit' => 10,
 						'unit'  => 'minute'
 					]
 				)
