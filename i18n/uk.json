@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Base"
+		]
+	},
+	"oauthratelimiter-desc": "Розширює розширення OAuth для включення тверджень обмежень швидкості до JWT"
+}
