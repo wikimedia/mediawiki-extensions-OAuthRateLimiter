@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"oauthratelimiter-desc": "Razširitev OAuth razširi tako, da v JWT vključuje izjave o omejitvi hitrosti"
+}
