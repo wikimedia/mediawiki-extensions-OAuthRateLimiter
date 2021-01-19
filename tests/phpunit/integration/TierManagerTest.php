@@ -110,10 +110,6 @@ class TierManagerTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @dataProvider provideTiers
-	 * @param string $tierName
-	 * @param string $defaultTierName
-	 * @param array $tierConfig
-	 * @param array $expectedTierConfig
 	 * @covers \MediaWiki\Extension\OAuthRateLimiter\TierManager::getClientTierConfig
 	 */
 	public function testGetClientTierConfig( $tierName, $defaultTierName, $tierConfig, $expectedTierConfig ) {
@@ -155,8 +151,6 @@ class TierManagerTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @dataProvider provideDefaultTiers
-	 * @param $defaultTierName
-	 * @param $expectedTierName
 	 * @covers \MediaWiki\Extension\OAuthRateLimiter\TierManager::getDefaultTierName
 	 */
 	public function testGetDefaultTier( $defaultTierName, $expectedTierName ) {

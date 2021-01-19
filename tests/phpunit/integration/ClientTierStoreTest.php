@@ -57,8 +57,6 @@ class ClientTierStoreTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @dataProvider provideTiersDB
-	 * @param string|int $tierName
-	 * @param string|null $expectedTierName
 	 * @covers \MediaWiki\Extension\OAuthRateLimiter\ClientTierStore::setClientTierName
 	 * @covers \MediaWiki\Extension\OAuthRateLimiter\ClientTierStore::getClientTierName
 	 */
