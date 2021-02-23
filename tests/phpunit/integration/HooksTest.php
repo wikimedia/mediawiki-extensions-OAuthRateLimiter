@@ -78,7 +78,7 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 
 		$claims = $this->claimStore->getClaims( 'dummyGrant',  $this->getClientEntity() );
 
-		$this->assertSame( count( $expectedClaimEntities ), count( $claims ) );
+		$this->assertCount( count( $expectedClaimEntities ), $claims );
 		foreach ( $expectedClaimEntities as $index => $claimEntity ) {
 			$this->assertEquals( $claimEntity->getName(), $claims[$index]->getName() );
 			$this->assertEquals( $claimEntity->getValue(), $claims[$index]->getValue() );
@@ -172,7 +172,7 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 		$this->setMwGlobals( 'wgOAuthRateLimiterTierConfig', $tierConfig );
 
 		$claims = $this->claimStore->getClaims( 'dummyType', $clientEntity );
-		$this->assertSame( count( $expectedClaimEntities ), count( $claims ) );
+		$this->assertCount( count( $expectedClaimEntities ), $claims );
 		foreach ( $expectedClaimEntities as $index => $claimEntity ) {
 			$this->assertEquals( $claimEntity->getName(), $claims[$index]->getName() );
 			$this->assertEquals( $claimEntity->getValue(), $claims[$index]->getValue() );
