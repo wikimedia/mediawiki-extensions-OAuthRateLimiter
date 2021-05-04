@@ -53,7 +53,7 @@ class ClientTierStore {
 				'oarct_client_id' => $clientID,
 				'oarct_tier_name' => $tierName,
 			],
-			[ 'oarct_id', 'oarct_client_id' ],
+			[ [ 'oarct_client_id' ] ],
 			[ 'oarct_tier_name' => $tierName ],
 			__METHOD__
 		);
