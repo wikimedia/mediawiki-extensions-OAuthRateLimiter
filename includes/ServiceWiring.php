@@ -8,7 +8,7 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 
 return [
-	'OAuthRateLimiterTierManager' => function ( MediaWikiServices $services ) {
+	'OAuthRateLimiterTierManager' => static function ( MediaWikiServices $services ) {
 		return new TierManager(
 			new ServiceOptions( TierManager::CONSTRUCTOR_OPTIONS, $services->getMainConfig() ),
 			LoggerFactory::getInstance( 'OAuthRateLimiterTierManager' ),
@@ -16,7 +16,7 @@ return [
 		);
 	},
 
-	'OAuthRateLimiterClientTierStore' => function ( MediaWikiServices $services ) {
+	'OAuthRateLimiterClientTierStore' => static function ( MediaWikiServices $services ) {
 		return new ClientTierStore(
 			$services->getDBLoadBalancerFactory()->getMainLB( Utils::getCentralWiki() )
 		);
