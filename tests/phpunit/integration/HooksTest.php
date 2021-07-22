@@ -23,7 +23,7 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 
 	private function getClientEntity() {
 		$clientEntity = Mock_ClientEntity::newMock( $this->getTestUser()->getUser() );
-		$db = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnectionRef( DB_MASTER );
+		$db = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnectionRef( DB_PRIMARY );
 		$this->assertTrue( $clientEntity->save( $db ), 'Sanity: must create a client' );
 
 		return $clientEntity;

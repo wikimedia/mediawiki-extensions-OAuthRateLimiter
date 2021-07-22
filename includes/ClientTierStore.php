@@ -45,7 +45,7 @@ class ClientTierStore {
 	 * @return bool True if successful, false otherwise
 	 */
 	public function setClientTierName( string $clientID, string $tierName ) : bool {
-		$dbw = $this->loadBalancer->getConnectionRef( DB_MASTER );
+		$dbw = $this->loadBalancer->getConnectionRef( DB_PRIMARY );
 
 		$dbw->upsert(
 			'oauth_ratelimit_client_tier',

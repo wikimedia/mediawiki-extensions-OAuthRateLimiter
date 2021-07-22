@@ -9,7 +9,7 @@
 	"license-name": "GPL-2.0-or-later",
 	"type": "hooks",
 	"requires": {
-		"MediaWiki": ">= 1.35.0",
+		"MediaWiki": ">= 1.35.3",
 		"extensions": {
 			"OAuth": ">= 1.1.0"
 		}

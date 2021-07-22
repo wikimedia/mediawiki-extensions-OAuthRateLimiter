@@ -29,7 +29,7 @@ class TierManagerTest extends MediaWikiIntegrationTestCase {
 
 	private function getClientEntity() : ClientEntity {
 		$clientEntity = Mock_ClientEntity::newMock( $this->getTestUser()->getUser() );
-		$db = $this->loadBalancer->getConnectionRef( DB_MASTER );
+		$db = $this->loadBalancer->getConnectionRef( DB_PRIMARY );
 		$this->assertTrue( $clientEntity->save( $db ), 'Sanity: must create a client' );
 
 		return $clientEntity;
