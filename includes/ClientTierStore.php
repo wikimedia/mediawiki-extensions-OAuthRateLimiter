@@ -44,7 +44,7 @@ class ClientTierStore {
 	 * @param string $tierName
 	 * @return bool True if successful, false otherwise
 	 */
-	public function setClientTierName( string $clientID, string $tierName ) : bool {
+	public function setClientTierName( string $clientID, string $tierName ): bool {
 		$dbw = $this->loadBalancer->getConnectionRef( DB_PRIMARY );
 
 		$dbw->upsert(

@@ -30,7 +30,7 @@ class ClientTierStoreTest extends MediaWikiIntegrationTestCase {
 		$this->tablesUsed[] = 'oauth_ratelimit_client_tier';
 	}
 
-	private function getClientEntity() : ClientEntity {
+	private function getClientEntity(): ClientEntity {
 		$clientEntity = Mock_ClientEntity::newMock( $this->getTestUser()->getUser() );
 		$db = $this->loadBalancer->getConnectionRef( DB_PRIMARY );
 		$this->assertTrue( $clientEntity->save( $db ), 'Sanity: must create a client' );

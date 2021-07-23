@@ -47,7 +47,7 @@ class TierManager {
 	 * @param string $clientID
 	 * @return array
 	 */
-	public function getClientTierConfig( string $clientID ) : array {
+	public function getClientTierConfig( string $clientID ): array {
 		$tierName = $this->clientTierStore->getClientTierName( $clientID );
 		$tierConfig = $this->serviceOptions->get( 'OAuthRateLimiterTierConfig' );
 
