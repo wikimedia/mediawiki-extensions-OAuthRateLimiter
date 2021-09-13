@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hamilton Abreu"
+		]
+	},
+	"oauthratelimiter-desc": "Expande a extensão OAuth para incluir pedidos de limite de frequência no JWT"
+}
