@@ -25,10 +25,10 @@ class LoadExtensionSchemaUpdatesHookHandler implements LoadExtensionSchemaUpdate
 				'oauth_ratelimit_client_tier',
 				dirname( __DIR__ ) . '/schema/tables-generated.sql'
 			);
-		} elseif ( $dbType === 'sqlite' ) {
+		} elseif ( $dbType === 'sqlite' || $dbType === 'postgres' ) {
 			$updater->addExtensionTable(
 				'oauth_ratelimit_client_tier',
-				dirname( __DIR__ ) . '/schema/sqlite/tables-generated.sql'
+				dirname( __DIR__ ) . '/schema/' . $dbType . '/tables-generated.sql'
 			);
 		}
 	}
