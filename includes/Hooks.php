@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\OAuthRateLimiter;
 
-use MediaWiki\Extensions\OAuth\Entity\ClaimEntity;
-use MediaWiki\Extensions\OAuth\Entity\MWClientEntityInterface;
-use MediaWiki\Extensions\OAuth\Repository\Hook\OAuthClaimStoreGetClaimsHook;
+use MediaWiki\Extension\OAuth\Entity\ClaimEntity;
+use MediaWiki\Extension\OAuth\Entity\MWClientEntityInterface;
+use MediaWiki\Extension\OAuth\Repository\Hook\OAuthClaimStoreGetClaimsHook;
 
 class Hooks implements OAuthClaimStoreGetClaimsHook {
 

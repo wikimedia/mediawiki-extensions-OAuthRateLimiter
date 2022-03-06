@@ -10,7 +10,7 @@
 namespace MediaWiki\Extension\OAuthRateLimiter;
 
 use Maintenance;
-use MediaWiki\Extensions\OAuth\Repository\ClientRepository;
+use MediaWiki\Extension\OAuth\Repository\ClientRepository;
 use MediaWiki\MediaWikiServices;
 use MWException;
 

@@ -1,8 +1,8 @@
 <?php
 
-use MediaWiki\Extensions\OAuth\Entity\ClaimEntity;
-use MediaWiki\Extensions\OAuth\Repository\ClaimStore;
-use MediaWiki\Extensions\OAuth\Tests\Entity\Mock_ClientEntity;
+use MediaWiki\Extension\OAuth\Entity\ClaimEntity;
+use MediaWiki\Extension\OAuth\Repository\ClaimStore;
+use MediaWiki\Extension\OAuth\Tests\Entity\Mock_ClientEntity;
 use MediaWiki\MediaWikiServices;
 
 /**
