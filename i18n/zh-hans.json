@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"StarrySky"
+		]
+	},
+	"oauthratelimiter-desc": "扩展 OAuth 扩展以在 JWT 中包含 ratelimit 声明"
+}
