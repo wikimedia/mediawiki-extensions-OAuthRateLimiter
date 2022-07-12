@@ -7,7 +7,7 @@ use MediaWiki\Extension\OAuthRateLimiter\ClientTierStore;
 use MediaWiki\Extension\OAuthRateLimiter\TierManager;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
-use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\ILBFactory;
 
 /**
  * @covers \MediaWiki\Extension\OAuthRateLimiter\TierManager
@@ -16,12 +16,12 @@ use Wikimedia\Rdbms\ILoadBalancer;
 class TierManagerTest extends MediaWikiIntegrationTestCase {
 
 	/**
-	 * @var ILoadBalancer
+	 * @var ILBFactory
 	 */
-	private $loadBalancer;
+	private $lbFactory;
 
 	protected function setUp(): void {
-		$this->loadBalancer = MediaWikiServices::getInstance()->getDBLoadBalancer();
+		$this->lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
 		$this->tablesUsed[] = 'oauth_registered_consumer';
 		$this->tablesUsed[] = 'oauth_ratelimit_client_tier';
@@ -29,7 +29,7 @@ class TierManagerTest extends MediaWikiIntegrationTestCase {
 
 	private function getClientEntity(): ClientEntity {
 		$clientEntity = Mock_ClientEntity::newMock( $this->getTestUser()->getUser() );
-		$db = $this->loadBalancer->getConnectionRef( DB_PRIMARY );
+		$db = $this->lbFactory->getMainLB()->getConnectionRef( DB_PRIMARY );
 		$this->assertTrue( $clientEntity->save( $db ), 'Sanity: must create a client' );
 
 		return $clientEntity;
@@ -45,7 +45,7 @@ class TierManagerTest extends MediaWikiIntegrationTestCase {
 				] )
 			),
 			LoggerFactory::getInstance( 'TierManagerTest' ),
-			new ClientTierStore( $this->loadBalancer )
+			new ClientTierStore( $this->lbFactory, false )
 		);
 	}
 

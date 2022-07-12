@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\OAuthRateLimiter;
 
+use Wikimedia\Rdbms\ILBFactory;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class ClientTierStore {
@@ -12,10 +13,20 @@ class ClientTierStore {
 	private $loadBalancer;
 
 	/**
-	 * @param ILoadBalancer $loadBalancer
+	 * @var string|false
 	 */
-	public function __construct( ILoadBalancer $loadBalancer ) {
-		$this->loadBalancer = $loadBalancer;
+	private $centralWiki;
+
+	/**
+	 * @param ILBFactory $lbFactory
+	 * @param string|false $centralWiki
+	 */
+	public function __construct(
+		ILBFactory $lbFactory,
+		$centralWiki
+	) {
+		$this->centralWiki = $centralWiki;
+		$this->loadBalancer = $lbFactory->getMainLB( $centralWiki );
 	}
 
 	/**
@@ -23,7 +34,7 @@ class ClientTierStore {
 	 * @return int|string|null
 	 */
 	public function getClientTierName( string $clientID ) {
-		$dbr = $this->loadBalancer->getConnectionRef( DB_REPLICA );
+		$dbr = $this->loadBalancer->getConnectionRef( DB_REPLICA, [], $this->centralWiki );
 
 		$res = $dbr->selectField(
 			'oauth_ratelimit_client_tier',
@@ -45,7 +56,7 @@ class ClientTierStore {
 	 * @return bool True if successful, false otherwise
 	 */
 	public function setClientTierName( string $clientID, string $tierName ): bool {
-		$dbw = $this->loadBalancer->getConnectionRef( DB_PRIMARY );
+		$dbw = $this->loadBalancer->getConnectionRef( DB_PRIMARY, [], $this->centralWiki );
 
 		$dbw->upsert(
 			'oauth_ratelimit_client_tier',

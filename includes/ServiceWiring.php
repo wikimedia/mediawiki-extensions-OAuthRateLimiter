@@ -18,7 +18,8 @@ return [
 
 	'OAuthRateLimiterClientTierStore' => static function ( MediaWikiServices $services ) {
 		return new ClientTierStore(
-			$services->getDBLoadBalancerFactory()->getMainLB( Utils::getCentralWiki() )
+			$services->getDBLoadBalancerFactory(),
+			Utils::getCentralWiki()
 		);
 	}
 ];
