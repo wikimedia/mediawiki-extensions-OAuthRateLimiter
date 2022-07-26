@@ -7,4 +7,5 @@ CREATE TABLE /*_*/oauth_ratelimit_client_tier (
   oarct_client_id VARCHAR(32) NOT NULL,
   oarct_tier_name VARCHAR(255) NOT NULL
 );
+
 CREATE UNIQUE INDEX oarct_client_id ON /*_*/oauth_ratelimit_client_tier (oarct_client_id);
