@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"oauthratelimiter-desc": "Extende le extension OAuth pro includer assertiones de limitation de frequentia in le JWT"
+}
