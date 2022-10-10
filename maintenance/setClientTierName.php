@@ -1,43 +1,26 @@
 <?php
-/**
- * Example:
- *
- * setClientTierName.php
- *	--client=8b8d1cb5a0d62029dd0051a9e
- *	--tier="Tier 1"
- */
 
 namespace MediaWiki\Extension\OAuthRateLimiter;
 
 use Maintenance;
 use MediaWiki\Extension\OAuth\Repository\ClientRepository;
 use MediaWiki\MediaWikiServices;
-use MWException;
+
+$IP = getenv( 'MW_INSTALL_PATH' );
+if ( $IP === false ) {
+	$IP = __DIR__ . '/../../..';
+}
+require_once "$IP/maintenance/Maintenance.php";
 
 /**
+ * Example:
+ *
+ * setClientTierName.php
+ *	--client=8b8d1cb5a0d62029dd0051a9e
+ *	--tier="Tier 1"
+ *
  * @ingroup Maintenance
  */
-
-// Security: Disable all stream wrappers and reenable individually as needed
-foreach ( stream_get_wrappers() as $wrapper ) {
-	stream_wrapper_unregister( $wrapper );
-}
-
-stream_wrapper_restore( 'file' );
-$basePath = getenv( 'MW_INSTALL_PATH' );
-if ( $basePath ) {
-	if ( !is_dir( $basePath )
-		|| strpos( $basePath, '..' ) !== false
-		|| strpos( $basePath, '~' ) !== false
-	) {
-		throw new MWException( "Bad MediaWiki install path: $basePath" );
-	}
-} else {
-	$basePath = __DIR__ . '/../../..';
-}
-
-require_once $basePath . '/maintenance/Maintenance.php';
-
 class SetClientTierName extends Maintenance {
 
 	public function __construct() {
