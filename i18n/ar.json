@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Meno25"
+		]
+	},
+	"oauthratelimiter-desc": "يوسع امتداد OAuth ليشمل مطالبات حدود النسب في JWT"
+}
