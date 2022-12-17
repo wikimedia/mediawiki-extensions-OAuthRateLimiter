@@ -1,9 +1,12 @@
 <?php
 
+namespace MediaWiki\Extension\OAuthRateLimiter\Tests\Integration;
+
 use MediaWiki\Extension\OAuth\Entity\ClaimEntity;
 use MediaWiki\Extension\OAuth\Repository\ClaimStore;
 use MediaWiki\Extension\OAuth\Tests\Entity\Mock_ClientEntity;
 use MediaWiki\MediaWikiServices;
+use MediaWikiIntegrationTestCase;
 
 /**
  * @covers \MediaWiki\Extension\OAuthRateLimiter\Hooks
@@ -70,7 +73,6 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @dataProvider provideDefaultClientTier
-	 * @covers \MediaWiki\Extension\OAuthRateLimiter\Hooks::onOAuthClaimStoreGetClaims
 	 */
 	public function testOnOAuthClaimStoreGetClaimsWithDefaultTier( $defaultName, $tierConfig, $expectedClaimEntities ) {
 		$this->setMwGlobals( 'wgOAuthRateLimiterDefaultClientTier', $defaultName );
@@ -150,7 +152,6 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @dataProvider provideDatabaseTiers
-	 * @covers \MediaWiki\Extension\OAuthRateLimiter\Hooks::onOAuthClaimStoreGetClaims
 	 */
 	public function testOnOAuthClaimStoreGetClaimsWithTiersInDB(
 		$tierName, $defaultTierName, $tierConfig, $expectedClaimEntities

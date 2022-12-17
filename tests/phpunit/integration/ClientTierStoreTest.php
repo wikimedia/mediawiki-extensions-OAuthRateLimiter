@@ -1,9 +1,12 @@
 <?php
 
+namespace MediaWiki\Extension\OAuthRateLimiter\Tests\Integration;
+
 use MediaWiki\Extension\OAuth\Entity\ClientEntity;
 use MediaWiki\Extension\OAuth\Tests\Entity\Mock_ClientEntity;
 use MediaWiki\Extension\OAuthRateLimiter\ClientTierStore;
 use MediaWiki\MediaWikiServices;
+use MediaWikiIntegrationTestCase;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
@@ -58,8 +61,6 @@ class ClientTierStoreTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @dataProvider provideTiersDB
-	 * @covers \MediaWiki\Extension\OAuthRateLimiter\ClientTierStore::setClientTierName
-	 * @covers \MediaWiki\Extension\OAuthRateLimiter\ClientTierStore::getClientTierName
 	 */
 	public function testGetClientTierWithDBTiers( $tierName, $expectedTierName ) {
 		$clientId = $this->getClientEntity()->getConsumerKey();
@@ -73,9 +74,6 @@ class ClientTierStoreTest extends MediaWikiIntegrationTestCase {
 		$this->assertSame( $expectedTierName, $tierNameFromStore );
 	}
 
-	/**
-	 * @covers \MediaWiki\Extension\OAuthRateLimiter\ClientTierStore::getClientTierName
-	 */
 	public function testGetClientTierWithoutDBTiers() {
 		$clientId = $this->getClientEntity()->getConsumerKey();
 		$tierFromStore = $this->clientTierStore->getClientTierName( $clientId );

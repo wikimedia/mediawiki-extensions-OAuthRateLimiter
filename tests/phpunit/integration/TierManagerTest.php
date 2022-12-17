@@ -1,5 +1,8 @@
 <?php
 
+namespace MediaWiki\Extension\OAuthRateLimiter\Tests\Integration;
+
+use HashConfig;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\OAuth\Entity\ClientEntity;
 use MediaWiki\Extension\OAuth\Tests\Entity\Mock_ClientEntity;
@@ -7,6 +10,7 @@ use MediaWiki\Extension\OAuthRateLimiter\ClientTierStore;
 use MediaWiki\Extension\OAuthRateLimiter\TierManager;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWikiIntegrationTestCase;
 use Wikimedia\Rdbms\ILBFactory;
 
 /**
@@ -110,7 +114,6 @@ class TierManagerTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @dataProvider provideTiers
-	 * @covers \MediaWiki\Extension\OAuthRateLimiter\TierManager::getClientTierConfig
 	 */
 	public function testGetClientTierConfig( $tierName, $defaultTierName, $tierConfig, $expectedTierConfig ) {
 		$clientID = $this->getClientEntity()->getConsumerKey();
@@ -151,7 +154,6 @@ class TierManagerTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @dataProvider provideDefaultTiers
-	 * @covers \MediaWiki\Extension\OAuthRateLimiter\TierManager::getDefaultTierName
 	 */
 	public function testGetDefaultTier( $defaultTierName, $expectedTierName ) {
 		$tierManager = $this->getTierManager( $defaultTierName, [] );
