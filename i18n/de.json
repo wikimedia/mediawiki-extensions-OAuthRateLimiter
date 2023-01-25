@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Justman10000"
+		]
+	},
+	"oauthratelimiter-desc": "Erweitert die OAuth-Erweiterung, um Ratelimit-Ansprüche in das JWT aufzunehmen"
+}
