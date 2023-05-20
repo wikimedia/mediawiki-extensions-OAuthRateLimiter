@@ -32,7 +32,7 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 		return $clientEntity;
 	}
 
-	public function provideDefaultClientTier() {
+	public static function provideDefaultClientTier() {
 		yield 'empty default name' => [
 			'',
 			[],
@@ -87,7 +87,7 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 		}
 	}
 
-	public function provideDatabaseTiers() {
+	public static function provideDatabaseTiers() {
 		yield 'tier name in db and matches tier config' => [
 			'tier IV',
 			'tier I',

@@ -53,7 +53,7 @@ class TierManagerTest extends MediaWikiIntegrationTestCase {
 		);
 	}
 
-	public function provideTiers() {
+	public static function provideTiers() {
 		yield 'Tier exist in config' => [
 			'tier 2',
 			'default',
@@ -135,7 +135,7 @@ class TierManagerTest extends MediaWikiIntegrationTestCase {
 		$this->assertArrayEquals( $expectedTierConfig, $clientTierConfig );
 	}
 
-	public function provideDefaultTiers() {
+	public static function provideDefaultTiers() {
 		yield 'default tier name match in tier config' => [
 			'tier I',
 			'tier I'

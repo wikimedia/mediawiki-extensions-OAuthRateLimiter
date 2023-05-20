@@ -42,7 +42,7 @@ class ClientTierStoreTest extends MediaWikiIntegrationTestCase {
 		return $clientEntity;
 	}
 
-	public function provideTiersDB() {
+	public static function provideTiersDB() {
 		yield 'Number tier name' => [
 			9,
 			'9'
