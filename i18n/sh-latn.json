@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vlad5250"
+			"Winston Sung"
 		]
 	},
 	"oauthratelimiter-desc": "Proširuje proširenje OAuth za uključivanje zahtjeva za ograničenje brzine u JWT-u"
