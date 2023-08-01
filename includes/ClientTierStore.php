@@ -34,7 +34,7 @@ class ClientTierStore {
 	 * @return int|string|null
 	 */
 	public function getClientTierName( string $clientID ) {
-		$dbr = $this->loadBalancer->getConnectionRef( DB_REPLICA, [], $this->centralWiki );
+		$dbr = $this->loadBalancer->getConnection( DB_REPLICA, [], $this->centralWiki );
 
 		$res = $dbr->selectField(
 			'oauth_ratelimit_client_tier',
@@ -56,7 +56,7 @@ class ClientTierStore {
 	 * @return bool True if successful, false otherwise
 	 */
 	public function setClientTierName( string $clientID, string $tierName ): bool {
-		$dbw = $this->loadBalancer->getConnectionRef( DB_PRIMARY, [], $this->centralWiki );
+		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY, [], $this->centralWiki );
 
 		$dbw->upsert(
 			'oauth_ratelimit_client_tier',
