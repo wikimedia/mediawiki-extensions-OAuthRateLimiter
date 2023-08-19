@@ -9,13 +9,15 @@
 	"license-name": "GPL-2.0-or-later",
 	"type": "hooks",
 	"requires": {
-		"MediaWiki": ">= 1.39.0",
+		"MediaWiki": ">= 1.41",
 		"extensions": {
 			"OAuth": ">= 1.1.0"
 		}
 	},
 	"MessagesDirs": {
-		"OAuthRateLimiter": [ "i18n" ]
+		"OAuthRateLimiter": [
+			"i18n"
+		]
 	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
@@ -26,7 +28,9 @@
 	"HookHandlers": {
 		"OAuthRateLimiterHooks": {
 			"class": "MediaWiki\\Extension\\OAuthRateLimiter\\Hooks",
-			"services": [ "OAuthRateLimiterTierManager" ]
+			"services": [
+				"OAuthRateLimiterTierManager"
+			]
 		},
 		"LoadExtensionSchemaUpdatesHookHandler": {
 			"class": "MediaWiki\\Extension\\OAuthRateLimiter\\LoadExtensionSchemaUpdatesHookHandler"
