@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"oauthratelimiter-desc": "Breidt de OAuth-uitbreiding uit met frequentielimietverklaringen in de JWT"
+}
