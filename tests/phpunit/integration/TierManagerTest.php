@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\OAuthRateLimiter\Tests\Integration;
 
-use HashConfig;
+use MediaWiki\Config\HashConfig;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\OAuth\Entity\ClientEntity;
 use MediaWiki\Extension\OAuth\Tests\Entity\Mock_ClientEntity;
