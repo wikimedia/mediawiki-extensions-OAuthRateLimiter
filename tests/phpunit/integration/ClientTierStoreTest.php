@@ -29,9 +29,6 @@ class ClientTierStoreTest extends MediaWikiIntegrationTestCase {
 		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 		$this->loadBalancer = $lbFactory->getMainLB();
 		$this->clientTierStore = new ClientTierStore( $lbFactory, false );
-
-		$this->tablesUsed[] = 'oauth_registered_consumer';
-		$this->tablesUsed[] = 'oauth_ratelimit_client_tier';
 	}
 
 	private function getClientEntity(): ClientEntity {

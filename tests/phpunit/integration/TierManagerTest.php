@@ -26,9 +26,6 @@ class TierManagerTest extends MediaWikiIntegrationTestCase {
 
 	protected function setUp(): void {
 		$this->lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-
-		$this->tablesUsed[] = 'oauth_registered_consumer';
-		$this->tablesUsed[] = 'oauth_ratelimit_client_tier';
 	}
 
 	private function getClientEntity(): ClientEntity {

@@ -20,8 +20,6 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 
 	protected function setUp(): void {
 		$this->claimStore = new ClaimStore();
-		$this->tablesUsed[] = 'oauth_registered_consumer';
-		$this->tablesUsed[] = 'oauth_ratelimit_client_tier';
 	}
 
 	private function getClientEntity() {
