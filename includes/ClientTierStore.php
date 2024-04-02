@@ -58,16 +58,17 @@ class ClientTierStore {
 	public function setClientTierName( string $clientID, string $tierName ): bool {
 		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY, [], $this->centralWiki );
 
-		$dbw->upsert(
-			'oauth_ratelimit_client_tier',
-			[
+		$dbw->newInsertQueryBuilder()
+			->insertInto( 'oauth_ratelimit_client_tier' )
+			->row( [
 				'oarct_client_id' => $clientID,
 				'oarct_tier_name' => $tierName,
-			],
-			[ [ 'oarct_client_id' ] ],
-			[ 'oarct_tier_name' => $tierName ],
-			__METHOD__
-		);
+			] )
+			->onDuplicateKeyUpdate()
+			->uniqueIndexFields( [ 'oarct_client_id' ] )
+			->set( [ 'oarct_tier_name' => $tierName ] )
+			->caller( __METHOD__ )
+			->execute();
 
 		return (bool)$dbw->affectedRows();
 	}
