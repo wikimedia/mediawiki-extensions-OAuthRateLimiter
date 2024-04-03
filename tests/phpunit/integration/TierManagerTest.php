@@ -116,17 +116,14 @@ class TierManagerTest extends MediaWikiIntegrationTestCase {
 		$clientID = $this->getClientEntity()->getConsumerKey();
 		$tierManager = $this->getTierManager( $defaultTierName, $tierConfig );
 
-		$this->assertTrue(
-			$this->db->insert(
-				'oauth_ratelimit_client_tier',
-				[
-					'oarct_client_id' => $clientID,
-					'oarct_tier_name' => $tierName,
-				],
-				__METHOD__
-			),
-			'Sanity: must add client tier'
-		);
+		$this->db->newInsertQueryBuilder()
+			->insertInto( 'oauth_ratelimit_client_tier' )
+			->row( [
+				'oarct_client_id' => $clientID,
+				'oarct_tier_name' => $tierName,
+			] )
+			->caller( __METHOD__ )
+			->execute();
 
 		$clientTierConfig = $tierManager->getClientTierConfig( $clientID );
 		$this->assertArrayEquals( $expectedTierConfig, $clientTierConfig );
