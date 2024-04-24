@@ -36,12 +36,12 @@ class ClientTierStore {
 	public function getClientTierName( string $clientID ) {
 		$dbr = $this->loadBalancer->getConnection( DB_REPLICA, [], $this->centralWiki );
 
-		$res = $dbr->selectField(
-			'oauth_ratelimit_client_tier',
-			'oarct_tier_name',
-			[ 'oarct_client_id' => $clientID ],
-			__METHOD__
-		);
+		$res = $dbr->newSelectQueryBuilder()
+			->select( 'oarct_tier_name' )
+			->from( 'oauth_ratelimit_client_tier' )
+			->where( [ 'oarct_client_id' => $clientID ] )
+			->caller( __METHOD__ )
+			->fetchField();
 
 		if ( $res ) {
 			return $res;
