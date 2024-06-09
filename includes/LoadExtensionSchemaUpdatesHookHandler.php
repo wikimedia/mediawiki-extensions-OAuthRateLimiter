@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\OAuthRateLimiter;
 
-use DatabaseUpdater;
 use MediaWiki\Extension\OAuth\Backend\Utils;
+use MediaWiki\Installer\DatabaseUpdater;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 
 class LoadExtensionSchemaUpdatesHookHandler implements LoadExtensionSchemaUpdatesHook {
