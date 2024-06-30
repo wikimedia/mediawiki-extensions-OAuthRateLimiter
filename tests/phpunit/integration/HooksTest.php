@@ -155,7 +155,7 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 		$tierName, $defaultTierName, $tierConfig, $expectedClaimEntities
 	) {
 		$clientEntity = $this->getClientEntity();
-		$this->db->newInsertQueryBuilder()
+		$this->getDb()->newInsertQueryBuilder()
 			->insertInto( 'oauth_ratelimit_client_tier' )
 			->row( [
 				'oarct_client_id' => $clientEntity->getConsumerKey(),
