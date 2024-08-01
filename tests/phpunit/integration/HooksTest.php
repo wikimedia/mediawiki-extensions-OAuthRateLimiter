@@ -73,8 +73,10 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider provideDefaultClientTier
 	 */
 	public function testOnOAuthClaimStoreGetClaimsWithDefaultTier( $defaultName, $tierConfig, $expectedClaimEntities ) {
-		$this->setMwGlobals( 'wgOAuthRateLimiterDefaultClientTier', $defaultName );
-		$this->setMwGlobals( 'wgOAuthRateLimiterTierConfig', $tierConfig );
+		$this->overrideConfigValues( [
+			'OAuthRateLimiterDefaultClientTier' => $defaultName,
+			'OAuthRateLimiterTierConfig' => $tierConfig,
+		] );
 
 		$claims = $this->claimStore->getClaims( 'dummyGrant', $this->getClientEntity() );
 
@@ -164,8 +166,10 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 			->caller( __METHOD__ )
 			->execute();
 
-		$this->setMwGlobals( 'wgOAuthRateLimiterDefaultClientTier', $defaultTierName );
-		$this->setMwGlobals( 'wgOAuthRateLimiterTierConfig', $tierConfig );
+		$this->overrideConfigValues( [
+			'OAuthRateLimiterDefaultClientTier' => $defaultTierName,
+			'OAuthRateLimiterTierConfig' => $tierConfig,
+		] );
 
 		$claims = $this->claimStore->getClaims( 'dummyType', $clientEntity );
 		$this->assertSameSize( $expectedClaimEntities, $claims );
