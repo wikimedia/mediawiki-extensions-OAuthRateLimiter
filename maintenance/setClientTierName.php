@@ -33,12 +33,11 @@ class SetClientTierName extends Maintenance {
 	}
 
 	public function execute() {
-		global $wgOAuthRateLimiterTierConfig;
-
 		$clientID = $this->getOption( 'client' );
 		$tierName = $this->getOption( 'tier' );
 
-		if ( !array_key_exists( $tierName, $wgOAuthRateLimiterTierConfig ) ) {
+		$tierConfig = $this->getConfig()->get( 'OAuthRateLimiterTierConfig' );
+		if ( !array_key_exists( $tierName, $tierConfig ) ) {
 			$this->fatalError( "$tierName must be set in wgOAuthRateLimiterTierConfig" );
 		}
 
