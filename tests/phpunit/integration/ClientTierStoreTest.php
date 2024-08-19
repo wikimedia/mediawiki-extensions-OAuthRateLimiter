@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\OAuthRateLimiter\Tests\Integration;
 use MediaWiki\Extension\OAuth\Entity\ClientEntity;
 use MediaWiki\Extension\OAuth\Tests\Entity\Mock_ClientEntity;
 use MediaWiki\Extension\OAuthRateLimiter\ClientTierStore;
-use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
 use Wikimedia\Rdbms\ILoadBalancer;
 
@@ -26,7 +25,7 @@ class ClientTierStoreTest extends MediaWikiIntegrationTestCase {
 	private $clientTierStore;
 
 	protected function setUp(): void {
-		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+		$lbFactory = $this->getServiceContainer()->getDBLoadBalancerFactory();
 		$this->loadBalancer = $lbFactory->getMainLB();
 		$this->clientTierStore = new ClientTierStore( $lbFactory, false );
 	}

@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\OAuthRateLimiter;
 
 use Maintenance;
 use MediaWiki\Extension\OAuth\Repository\ClientRepository;
-use MediaWiki\MediaWikiServices;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
@@ -41,7 +40,7 @@ class SetClientTierName extends Maintenance {
 			$this->fatalError( "$tierName must be set in wgOAuthRateLimiterTierConfig" );
 		}
 
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 
 		// Check if $clientID is valid
 		$clientRepository = new ClientRepository();

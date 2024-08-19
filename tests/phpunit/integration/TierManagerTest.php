@@ -9,7 +9,6 @@ use MediaWiki\Extension\OAuth\Tests\Entity\Mock_ClientEntity;
 use MediaWiki\Extension\OAuthRateLimiter\ClientTierStore;
 use MediaWiki\Extension\OAuthRateLimiter\TierManager;
 use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
 use Wikimedia\Rdbms\ILBFactory;
 
@@ -25,7 +24,7 @@ class TierManagerTest extends MediaWikiIntegrationTestCase {
 	private $lbFactory;
 
 	protected function setUp(): void {
-		$this->lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+		$this->lbFactory = $this->getServiceContainer()->getDBLoadBalancerFactory();
 	}
 
 	private function getClientEntity(): ClientEntity {
