@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\OAuthRateLimiter\Tests\Integration;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\OAuth\Entity\ClientEntity;
-use MediaWiki\Extension\OAuth\Tests\Entity\Mock_ClientEntity;
+use MediaWiki\Extension\OAuth\Tests\Entity\MockClientEntity;
 use MediaWiki\Extension\OAuthRateLimiter\ClientTierStore;
 use MediaWiki\Extension\OAuthRateLimiter\TierManager;
 use MediaWiki\Logger\LoggerFactory;
@@ -28,7 +28,7 @@ class TierManagerTest extends MediaWikiIntegrationTestCase {
 	}
 
 	private function getClientEntity(): ClientEntity {
-		$clientEntity = Mock_ClientEntity::newMock( $this->getTestUser()->getUser() );
+		$clientEntity = MockClientEntity::newMock( $this->getTestUser()->getUser() );
 		$db = $this->lbFactory->getMainLB()->getConnection( DB_PRIMARY );
 		$this->assertTrue( $clientEntity->save( $db ), 'Sanity: must create a client' );
 
