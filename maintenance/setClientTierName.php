@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\OAuthRateLimiter;
 
-use Maintenance;
 use MediaWiki\Extension\OAuth\Repository\ClientRepository;
+use MediaWiki\Maintenance\Maintenance;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
