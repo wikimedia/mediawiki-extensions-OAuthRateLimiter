@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño"
+		]
+	},
+	"oauthratelimiter-desc": "Amplía a extensión OAuth para incluír as solicitudes de límite de frecuencia no JWT"
+}
