@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Suleiman the Magnificent Television"
+		]
+	},
+	"oauthratelimiter-desc": "OAuth 확장자를 확장하여 JSON 웹 토큰에 비율 제한 요구 사항을 포함합니다."
+}
