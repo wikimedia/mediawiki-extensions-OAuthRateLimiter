@@ -8,16 +8,9 @@ use MediaWiki\Extension\OAuth\Repository\Hook\OAuthClaimStoreGetClaimsHook;
 
 class Hooks implements OAuthClaimStoreGetClaimsHook {
 
-	/**
-	 * @var TierManager
-	 */
-	private $tierManager;
-
-	/**
-	 * @param TierManager $tierManager
-	 */
-	public function __construct( TierManager $tierManager ) {
-		$this->tierManager = $tierManager;
+	public function __construct(
+		private readonly TierManager $tierManager,
+	) {
 	}
 
 	/**

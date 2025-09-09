@@ -12,35 +12,12 @@ class TierManager {
 		'OAuthRateLimiterTierConfig'
 	];
 
-	/**
-	 * @var ServiceOptions
-	 */
-	private $serviceOptions;
-
-	/**
-	 * @var LoggerInterface
-	 */
-	private $logger;
-
-	/**
-	 * @var ClientTierStore
-	 */
-	private $clientTierStore;
-
-	/**
-	 * @param ServiceOptions $serviceOptions
-	 * @param LoggerInterface $logger
-	 * @param ClientTierStore $clientTierStore
-	 */
 	public function __construct(
-		ServiceOptions $serviceOptions,
-		LoggerInterface $logger,
-		ClientTierStore $clientTierStore
+		private readonly ServiceOptions $serviceOptions,
+		private readonly LoggerInterface $logger,
+		private readonly ClientTierStore $clientTierStore,
 	) {
 		$serviceOptions->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
-		$this->serviceOptions = $serviceOptions;
-		$this->logger = $logger;
-		$this->clientTierStore = $clientTierStore;
 	}
 
 	/**
