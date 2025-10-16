@@ -2,31 +2,20 @@
 
 namespace MediaWiki\Extension\OAuthRateLimiter;
 
-use Wikimedia\Rdbms\ILBFactory;
-use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\IConnectionProvider;
 
 class ClientTierStore {
 
 	/**
-	 * @var ILoadBalancer
+	 * @var IConnectionProvider
 	 */
-	private $loadBalancer;
+	private $connProvider;
 
 	/**
-	 * @var string|false
+	 * @param IConnectionProvider $connProvider
 	 */
-	private $centralWiki;
-
-	/**
-	 * @param ILBFactory $lbFactory
-	 * @param string|false $centralWiki
-	 */
-	public function __construct(
-		ILBFactory $lbFactory,
-		$centralWiki
-	) {
-		$this->centralWiki = $centralWiki;
-		$this->loadBalancer = $lbFactory->getMainLB( $centralWiki );
+	public function __construct( IConnectionProvider $connProvider ) {
+		$this->connProvider = $connProvider;
 	}
 
 	/**
@@ -34,7 +23,7 @@ class ClientTierStore {
 	 * @return int|string|null
 	 */
 	public function getClientTierName( string $clientID ) {
-		$dbr = $this->loadBalancer->getConnection( DB_REPLICA, [], $this->centralWiki );
+		$dbr = $this->connProvider->getReplicaDatabase( 'virtual-oauthratelimiter' );
 
 		$res = $dbr->newSelectQueryBuilder()
 			->select( 'oarct_tier_name' )
@@ -56,7 +45,7 @@ class ClientTierStore {
 	 * @return bool True if successful, false otherwise
 	 */
 	public function setClientTierName( string $clientID, string $tierName ): bool {
-		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY, [], $this->centralWiki );
+		$dbw = $this->connProvider->getPrimaryDatabase( 'virtual-oauthratelimiter' );
 
 		$dbw->newInsertQueryBuilder()
 			->insertInto( 'oauth_ratelimit_client_tier' )

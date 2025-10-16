@@ -34,11 +34,15 @@
 		},
 		"LoadExtensionSchemaUpdatesHookHandler": {
 			"class": "MediaWiki\\Extension\\OAuthRateLimiter\\LoadExtensionSchemaUpdatesHookHandler"
+		},
+		"MWServicesHookHandler": {
+			"class": "MediaWiki\\Extension\\OAuthRateLimiter\\MWServicesHookHandler"
 		}
 	},
 	"Hooks": {
 		"OAuthClaimStoreGetClaims": "OAuthRateLimiterHooks",
-		"LoadExtensionSchemaUpdates": "LoadExtensionSchemaUpdatesHookHandler"
+		"LoadExtensionSchemaUpdates": "LoadExtensionSchemaUpdatesHookHandler",
+		"MediaWikiServices": "MWServicesHookHandler"
 	},
 	"config": {
 		"OAuthRateLimiterDefaultClientTier": {
@@ -50,5 +54,8 @@
 			"value": {}
 		}
 	},
+	"DatabaseVirtualDomains": [
+		"virtual-oauthratelimiter"
+	],
 	"manifest_version": 2
 }

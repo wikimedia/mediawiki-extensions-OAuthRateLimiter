@@ -27,7 +27,7 @@ class ClientTierStoreTest extends MediaWikiIntegrationTestCase {
 	protected function setUp(): void {
 		$lbFactory = $this->getServiceContainer()->getDBLoadBalancerFactory();
 		$this->loadBalancer = $lbFactory->getMainLB();
-		$this->clientTierStore = new ClientTierStore( $lbFactory, false );
+		$this->clientTierStore = new ClientTierStore( $this->getServiceContainer()->getConnectionProvider() );
 	}
 
 	private function getClientEntity(): ClientEntity {

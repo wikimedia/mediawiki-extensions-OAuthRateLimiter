@@ -1,7 +1,6 @@
 <?php
 
 use MediaWiki\Config\ServiceOptions;
-use MediaWiki\Extension\OAuth\Backend\Utils;
 use MediaWiki\Extension\OAuthRateLimiter\ClientTierStore;
 use MediaWiki\Extension\OAuthRateLimiter\TierManager;
 use MediaWiki\Logger\LoggerFactory;
@@ -10,10 +9,7 @@ use MediaWiki\MediaWikiServices;
 /** @phpcs-require-sorted-array */
 return [
 	'OAuthRateLimiterClientTierStore' => static function ( MediaWikiServices $services ): ClientTierStore {
-		return new ClientTierStore(
-			$services->getDBLoadBalancerFactory(),
-			Utils::getCentralWiki()
-		);
+		return new ClientTierStore( $services->getConnectionProvider() );
 	},
 
 	'OAuthRateLimiterTierManager' => static function ( MediaWikiServices $services ): TierManager {

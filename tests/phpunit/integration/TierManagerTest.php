@@ -45,7 +45,7 @@ class TierManagerTest extends MediaWikiIntegrationTestCase {
 				] )
 			),
 			LoggerFactory::getInstance( 'TierManagerTest' ),
-			new ClientTierStore( $this->lbFactory, false )
+			new ClientTierStore( $this->getServiceContainer()->getConnectionProvider() )
 		);
 	}
 

@@ -20,7 +20,10 @@ class Hooks implements OAuthClaimStoreGetClaimsHook {
 	 * @param string|null $userIdentifier
 	 */
 	public function onOAuthClaimStoreGetClaims(
-		string $grantType, MWClientEntityInterface $clientEntity, array &$privateClaims, $userIdentifier = null
+		string $grantType,
+		MWClientEntityInterface $clientEntity,
+		array &$privateClaims,
+		$userIdentifier = null
 	) {
 		$clientID = $clientEntity->getIdentifier();
 		$res = $this->tierManager->getClientTierConfig( $clientID );
