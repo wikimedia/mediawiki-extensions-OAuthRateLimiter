@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stefan2255"
+		]
+	},
+	"oauthratelimiter-desc": "Utökar OAuth-tillägget till att inkludera ratelimit-anspråk i JWT"
+}
