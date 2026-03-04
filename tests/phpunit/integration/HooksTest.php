@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\OAuthRateLimiter\Tests\Integration;
 
 use MediaWiki\Extension\OAuth\Entity\ClaimEntity;
 use MediaWiki\Extension\OAuth\Repository\ClaimStore;
-use MediaWiki\Extension\OAuth\Tests\Entity\MockClientEntity;
+use MediaWiki\Extension\OAuth\Tests\Integration\Entity\MockClientEntity;
 use MediaWikiIntegrationTestCase;
 
 /**

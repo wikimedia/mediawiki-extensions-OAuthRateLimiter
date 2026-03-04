@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\OAuthRateLimiter\Tests\Integration;
 
 use MediaWiki\Extension\OAuth\Entity\ClientEntity;
-use MediaWiki\Extension\OAuth\Tests\Entity\MockClientEntity;
+use MediaWiki\Extension\OAuth\Tests\Integration\Entity\MockClientEntity;
 use MediaWiki\Extension\OAuthRateLimiter\ClientTierStore;
 use MediaWikiIntegrationTestCase;
 use Wikimedia\Rdbms\ILoadBalancer;

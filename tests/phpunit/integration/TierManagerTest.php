@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\OAuthRateLimiter\Tests\Integration;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\OAuth\Entity\ClientEntity;
-use MediaWiki\Extension\OAuth\Tests\Entity\MockClientEntity;
+use MediaWiki\Extension\OAuth\Tests\Integration\Entity\MockClientEntity;
 use MediaWiki\Extension\OAuthRateLimiter\ClientTierStore;
 use MediaWiki\Extension\OAuthRateLimiter\TierManager;
 use MediaWiki\Logger\LoggerFactory;
