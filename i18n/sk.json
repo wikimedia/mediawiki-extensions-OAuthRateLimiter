@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wizzard"
+		]
+	},
+	"oauthratelimiter-desc": "Rozširuje rozšírenie OAuth o zahrnutie nárokov na obmedzenie frekvencie (ratelimit) do JWT"
+}
