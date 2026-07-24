@@ -2,7 +2,8 @@
 
 namespace MediaWiki\Extension\OAuthRateLimiter;
 
-use MediaWiki\Extension\OAuth\Repository\ClientRepository;
+use MediaWiki\Extension\OAuth\OAuthServices;
+use MediaWiki\Extension\OAuth\Repository\ClientRepositoryAdapter;
 use MediaWiki\Maintenance\Maintenance;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -41,9 +42,10 @@ class SetClientTierName extends Maintenance {
 		}
 
 		$services = $this->getServiceContainer();
+		$consumerRepository = OAuthServices::wrap( $services )->getConsumerRepository();
 
 		// Check if $clientID is valid
-		$clientRepository = new ClientRepository();
+		$clientRepository = new ClientRepositoryAdapter( $consumerRepository );
 		$res = $clientRepository->getClientEntity( $clientID );
 
 		if ( $res ) {

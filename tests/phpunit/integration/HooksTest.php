@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\OAuthRateLimiter\Tests\Integration;
 
 use MediaWiki\Extension\OAuth\Entity\ClaimEntity;
+use MediaWiki\Extension\OAuth\OAuthServices;
 use MediaWiki\Extension\OAuth\Repository\ClaimStore;
 use MediaWiki\Extension\OAuth\Tests\Integration\Entity\MockClientEntity;
 use MediaWikiIntegrationTestCase;
@@ -23,8 +24,8 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 
 	private function getClientEntity() {
 		$clientEntity = MockClientEntity::newMock( $this->getTestUser()->getUser() );
-		$db = $this->getServiceContainer()->getDBLoadBalancerFactory()->getPrimaryDatabase();
-		$this->assertTrue( $clientEntity->save( $db ), 'Sanity: must create a client' );
+		$consumerRepository = OAuthServices::wrap( $this->getServiceContainer() )->getConsumerRepository();
+		$this->assertTrue( $consumerRepository->save( $clientEntity ), 'Sanity: must create a client' );
 
 		return $clientEntity;
 	}

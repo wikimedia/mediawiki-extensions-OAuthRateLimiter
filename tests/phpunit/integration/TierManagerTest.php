@@ -5,12 +5,12 @@ namespace MediaWiki\Extension\OAuthRateLimiter\Tests\Integration;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\OAuth\Entity\ClientEntity;
+use MediaWiki\Extension\OAuth\OAuthServices;
 use MediaWiki\Extension\OAuth\Tests\Integration\Entity\MockClientEntity;
 use MediaWiki\Extension\OAuthRateLimiter\ClientTierStore;
 use MediaWiki\Extension\OAuthRateLimiter\TierManager;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWikiIntegrationTestCase;
-use Wikimedia\Rdbms\ILBFactory;
 
 /**
  * @covers \MediaWiki\Extension\OAuthRateLimiter\TierManager
@@ -18,19 +18,10 @@ use Wikimedia\Rdbms\ILBFactory;
  */
 class TierManagerTest extends MediaWikiIntegrationTestCase {
 
-	/**
-	 * @var ILBFactory
-	 */
-	private $lbFactory;
-
-	protected function setUp(): void {
-		$this->lbFactory = $this->getServiceContainer()->getDBLoadBalancerFactory();
-	}
-
 	private function getClientEntity(): ClientEntity {
 		$clientEntity = MockClientEntity::newMock( $this->getTestUser()->getUser() );
-		$db = $this->lbFactory->getMainLB()->getConnection( DB_PRIMARY );
-		$this->assertTrue( $clientEntity->save( $db ), 'Sanity: must create a client' );
+		$consumerRepository = OAuthServices::wrap( $this->getServiceContainer() )->getConsumerRepository();
+		$this->assertTrue( $consumerRepository->save( $clientEntity ), 'Sanity: must create a client' );
 
 		return $clientEntity;
 	}
