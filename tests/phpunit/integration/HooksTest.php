@@ -34,7 +34,9 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 		yield 'empty default name' => [
 			'',
 			[],
-			[]
+			[
+				new ClaimEntity( 'grant_type', 'dummyGrant' )
+			]
 		];
 
 		yield 'default name set without match in tier config' => [
@@ -47,7 +49,9 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 					]
 				]
 			],
-			[]
+			[
+				new ClaimEntity( 'grant_type', 'dummyGrant' )
+			]
 		];
 
 		yield 'default name set with match in tier config' => [
@@ -61,6 +65,7 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 				]
 			],
 			[
+				new ClaimEntity( 'grant_type', 'dummyGrant' ),
 				new ClaimEntity( 'ratelimit', [
 					'requests_per_unit' => 10,
 					'unit'  => 'minute'
@@ -106,6 +111,7 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 				]
 			],
 			[
+				new ClaimEntity( 'grant_type', 'dummyType' ),
 				new ClaimEntity( 'ratelimit',
 					[
 						'requests_per_unit' => 999,
@@ -133,6 +139,7 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 				]
 			],
 			[
+				new ClaimEntity( 'grant_type', 'dummyType' ),
 				new ClaimEntity( 'ratelimit',
 					[
 						'requests_per_unit' => 10,
@@ -146,7 +153,9 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 			'tier II',
 			'',
 			[],
-			[]
+			[
+				new ClaimEntity( 'grant_type', 'dummyType' )
+			]
 		];
 	}
 
